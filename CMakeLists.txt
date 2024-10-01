@@ -1,6 +1,5 @@
-project(plansys2_tfd_plan_solver)
-
 cmake_minimum_required(VERSION 3.5)
+project(plansys2_tfd_plan_solver)
 
 find_package(Threads REQUIRED)
 
@@ -28,17 +27,22 @@ add_library(${PROJECT_NAME} SHARED
 )
 ament_target_dependencies(${PROJECT_NAME} ${dependencies})
 
+target_compile_definitions(${PROJECT_NAME} PUBLIC "PLUGINLIB__DISABLE_BOOST_FUNCTIONS")
+
+pluginlib_export_plugin_description_file(plansys2_core plansys2_tfd_plan_solver_plugin.xml)
+
+install(DIRECTORY include/
+  DESTINATION include/
+)
+install(FILES plansys2_tfd_plan_solver_plugin.xml
+  DESTINATION share/${PROJECT_NAME}
+)
 install(TARGETS
   ${PROJECT_NAME}
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION bin
 )
-
-install(DIRECTORY include/
-  DESTINATION include/
-)
-
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   ament_lint_auto_find_test_dependencies()
@@ -51,6 +55,5 @@ ament_export_include_directories(include)
 ament_export_libraries(${PROJECT_NAME})
 ament_export_dependencies(${dependencies})
 
-pluginlib_export_plugin_description_file(plansys2_core plansys2_tfd_plan_solver_plugin.xml)
 
 ament_package()

@@ -32,16 +32,14 @@ class TFDPlanSolver : public PlanSolverBase
 public:
   TFDPlanSolver();
 
-  void configure(rclcpp_lifecycle::LifecycleNode::SharedPtr, const std::string &);
+  void configure(rclcpp_lifecycle::LifecycleNode::SharedPtr, const std::string&);
 
-  std::optional<plansys2_msgs::msg::Plan> getPlan(
-    const std::string & domain, const std::string & problem,
-    const std::string & node_namespace = "",
-    const rclcpp::Duration solver_timeout = 15s);
+  std::optional<plansys2_msgs::msg::Plan> getPlan(const std::string& domain,
+                                                  const std::string& problem,
+                                                  const std::string& node_namespace = "",
+                                                  const rclcpp::Duration solver_timeout = 15s);
 
-  bool isDomainValid(
-    const std::string & domain,
-    const std::string & node_namespace = "");
+  bool isDomainValid(const std::string& domain, const std::string& node_namespace = "");
 
 private:
   std::string tfd_path_;
