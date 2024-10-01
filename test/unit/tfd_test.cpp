@@ -27,14 +27,12 @@ TEST(tfd_plan_solver, generate_plan_good)
 {
   std::string pkgpath = ament_index_cpp::get_package_share_directory("plansys2_tfd_plan_solver");
   std::ifstream domain_ifs(pkgpath + "/pddl/domain_simple.pddl");
-  std::string domain_str((
-      std::istreambuf_iterator<char>(domain_ifs)),
-    std::istreambuf_iterator<char>());
+  std::string domain_str((std::istreambuf_iterator<char>(domain_ifs)),
+                         std::istreambuf_iterator<char>());
 
   std::ifstream problem_ifs(pkgpath + "/pddl/problem_simple_1.pddl");
-  std::string problem_str((
-      std::istreambuf_iterator<char>(problem_ifs)),
-    std::istreambuf_iterator<char>());
+  std::string problem_str((std::istreambuf_iterator<char>(problem_ifs)),
+                          std::istreambuf_iterator<char>());
 
   auto node = rclcpp_lifecycle::LifecycleNode::make_shared("test_node");
   auto planner = std::make_shared<plansys2::TFDPlanSolver>();
@@ -52,14 +50,12 @@ TEST(tfd_plan_solver, generate_plan_unsolvable)
 {
   std::string pkgpath = ament_index_cpp::get_package_share_directory("plansys2_tfd_plan_solver");
   std::ifstream domain_ifs(pkgpath + "/pddl/domain_simple.pddl");
-  std::string domain_str((
-      std::istreambuf_iterator<char>(domain_ifs)),
-    std::istreambuf_iterator<char>());
+  std::string domain_str((std::istreambuf_iterator<char>(domain_ifs)),
+                         std::istreambuf_iterator<char>());
 
   std::ifstream problem_ifs(pkgpath + "/pddl/problem_simple_2.pddl");
-  std::string problem_str((
-      std::istreambuf_iterator<char>(problem_ifs)),
-    std::istreambuf_iterator<char>());
+  std::string problem_str((std::istreambuf_iterator<char>(problem_ifs)),
+                          std::istreambuf_iterator<char>());
 
   auto node = rclcpp_lifecycle::LifecycleNode::make_shared("test_node");
   auto planner = std::make_shared<plansys2::TFDPlanSolver>();
@@ -74,14 +70,12 @@ TEST(tfd_plan_solver, generate_plan_error)
 {
   std::string pkgpath = ament_index_cpp::get_package_share_directory("plansys2_tfd_plan_solver");
   std::ifstream domain_ifs(pkgpath + "/pddl/domain_simple.pddl");
-  std::string domain_str((
-      std::istreambuf_iterator<char>(domain_ifs)),
-    std::istreambuf_iterator<char>());
+  std::string domain_str((std::istreambuf_iterator<char>(domain_ifs)),
+                         std::istreambuf_iterator<char>());
 
   std::ifstream problem_ifs(pkgpath + "/pddl/problem_simple_3.pddl");
-  std::string problem_str((
-      std::istreambuf_iterator<char>(problem_ifs)),
-    std::istreambuf_iterator<char>());
+  std::string problem_str((std::istreambuf_iterator<char>(problem_ifs)),
+                          std::istreambuf_iterator<char>());
 
   auto node = rclcpp_lifecycle::LifecycleNode::make_shared("test_node");
   auto planner = std::make_shared<plansys2::TFDPlanSolver>();
@@ -92,8 +86,7 @@ TEST(tfd_plan_solver, generate_plan_error)
   ASSERT_FALSE(plan);
 }
 
-
-int main(int argc, char ** argv)
+int main(int argc, char** argv)
 {
   testing::InitGoogleTest(&argc, argv);
   rclcpp::init(argc, argv);
